@@ -1,286 +1,265 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2299.77">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.7px Times; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.7px Times; color: #0000e9; -webkit-text-stroke: #000000}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-    span.s2 {font-kerning: none; color: #000000}
-    span.s3 {text-decoration: underline ; font-kerning: none}
-    span.s4 {text-decoration: underline ; font-kerning: none; color: #0000e9}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IBI Clinic Intelligence - AP Ledger</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0f172a; }
   </style>
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;title&gt;IBI Clinic Intelligence - AP Ledger&lt;/title&gt;</span></p>
-<p class="p2"><span class="s2">  &lt;script src="<a href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"><span class="s3">https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4</span></a>"&gt;&lt;/script&gt;</span></p>
-<p class="p2"><span class="s2">  &lt;script src="<a href="https://cdn.jsdelivr.net/npm/chart.js"><span class="s3">https://cdn.jsdelivr.net/npm/chart.js</span></a>"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;style&gt;</span></p>
-<p class="p1"><span class="s1">    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0f172a; }</span></p>
-<p class="p1"><span class="s1">  &lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body class="text-slate-200 min-h-screen p-6"&gt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;header class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-800 pb-4 mb-6 gap-4"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;h1 class="text-2xl font-bold tracking-tight flex items-center gap-2 text-white"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;span class="bg-blue-600 p-1.5 rounded-lg text-sm font-black"&gt;IBI&lt;/span&gt; CLINIC INTELLIGENCE</span></p>
-<p class="p1"><span class="s1">      &lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;p class="text-xs text-slate-400 mt-1 uppercase tracking-widest"&gt;Accounts Payable Operations Hub&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    </span></p>
-<p class="p1"><span class="s1">    &lt;div class="flex flex-wrap items-center gap-3"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;button id="viewToggle" onclick="toggleViewMode()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2.5 rounded-lg shadow transition cursor-pointer"&gt;</span></p>
-<p class="p1"><span class="s1">        SWITCH TO YTD VIEW</span></p>
-<p class="p1"><span class="s1">      &lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;button onclick="clearConfig()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs px-3 py-2.5 rounded-lg border border-slate-700 transition cursor-pointer"&gt;</span></p>
-<p class="p1"><span class="s1">        Disconnect Sheet</span></p>
-<p class="p1"><span class="s1">      &lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/header&gt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;div id="setupGate" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 max-w-xl mx-auto my-12 text-center shadow-2xl"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;div class="text-3xl mb-3"&gt;🔒&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;h3 class="text-lg font-bold text-white mb-2"&gt;Connect Your Secure Data Stream&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;p class="text-slate-400 text-sm mb-4"&gt;Paste your Google Apps Script Web App URL below to safely link your interactive frontend dashboard to your live spreadsheet logs.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;input type="text" id="apiUrlInput" placeholder="<a href="https://script.google.com/a/macros/ibihealthcare.com/s/.../exec"><span class="s4">https://script.google.com/a/macros/ibihealthcare.com/s/.../exec</span></a>" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500 mb-4"&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;button onclick="saveConfig()" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-6 py-2 rounded-lg cursor-pointer transition"&gt;Connect Live Database&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/div&gt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;main id="dashboardCore" class="hidden"&gt;</span></p>
-<p class="p1"><span class="s1">    </span></p>
-<p class="p1"><span class="s1">    &lt;div class="mb-4"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;span id="contextBadge" class="bg-blue-950 text-blue-400 font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full border border-blue-900"&gt;</span></p>
-<p class="p1"><span class="s1">        Active Dashboard Scope: Current Month (MTD)</span></p>
-<p class="p1"><span class="s1">      &lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    &lt;div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6"&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p class="text-xs font-semibold text-slate-400 uppercase tracking-wider"&gt;Total Evaluated Cash&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p id="kpiTotal" class="text-3xl font-bold text-white mt-1"&gt;$0.00&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;span class="inline-block text-[11px] font-medium bg-slate-800 text-slate-300 px-2 py-0.5 rounded mt-2 border border-slate-700"&gt;Gross Portfolio Sum&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p class="text-xs font-semibold text-slate-400 uppercase tracking-wider"&gt;Approved for Release&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p id="kpiApproved" class="text-3xl font-bold text-emerald-400 mt-1"&gt;$0.00&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;span class="inline-block text-[11px] font-medium bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded mt-2 border border-emerald-900"&gt;Cleared for Clearing&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p class="text-xs font-semibold text-slate-400 uppercase tracking-wider"&gt;Pending Human Review&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p id="kpiPending" class="text-3xl font-bold text-amber-400 mt-1"&gt;$0.00&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;span class="inline-block text-[11px] font-medium bg-amber-950 text-amber-400 px-2 py-0.5 rounded mt-2 border border-amber-900"&gt;Awaiting Response Click&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p class="text-xs font-semibold text-slate-400 uppercase tracking-wider"&gt;Past Due Delinquency&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;p id="kpiPastDue" class="text-3xl font-bold text-rose-500 mt-1"&gt;$0.00&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;span class="inline-block text-[11px] font-medium bg-rose-950 text-rose-400 px-2 py-0.5 rounded mt-2 border border-rose-900"&gt;Aging Out Limits&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    &lt;div class="grid grid-cols-1 lg:grid-cols-3 gap-6"&gt;</span></p>
-<p class="p1"><span class="s1">      </span></p>
-<p class="p1"><span class="s1">      &lt;div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5 min-h-[380px] flex flex-col justify-between"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;h2 class="text-md font-bold text-white uppercase tracking-wide"&gt;Regional Footprint Distribution&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;p class="text-xs text-slate-400 mt-0.5"&gt;Expenditures mapped explicitly across regional healthcare offices&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div class="h-64 mt-4 relative"&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;canvas id="locationChart"&gt;&lt;/canvas&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      &lt;div class="bg-slate-900 border border-slate-800 rounded-xl p-5 min-h-[380px] flex flex-col justify-between"&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;h2 class="text-md font-bold text-white uppercase tracking-wide"&gt;Expenditure Sourcing Mix&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;p class="text-xs text-slate-400 mt-0.5"&gt;Portfolio split across specialized operating cost codes&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;div class="h-64 mt-4 relative flex justify-center items-center"&gt;</span></p>
-<p class="p1"><span class="s1">          &lt;canvas id="categoryChart"&gt;&lt;/canvas&gt;</span></p>
-<p class="p1"><span class="s1">        &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">      &lt;/div&gt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    &lt;/div&gt;</span></p>
-<p class="p1"><span class="s1">  &lt;/main&gt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">  &lt;script&gt;</span></p>
-<p class="p1"><span class="s1">    let globalDataRaw = [];</span></p>
-<p class="p1"><span class="s1">    let isYearToDateMode = false;</span></p>
-<p class="p1"><span class="s1">    let locationChartInstance = null;</span></p>
-<p class="p1"><span class="s1">    let categoryChartInstance = null;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    window.addEventListener('DOMContentLoaded', () =&gt; {</span></p>
-<p class="p1"><span class="s1">      initializeDashboardLifecycle();</span></p>
-<p class="p1"><span class="s1">    });</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function initializeDashboardLifecycle() {</span></p>
-<p class="p1"><span class="s1">      const storedUrl = localStorage.getItem('ibi_dashboard_api_url');</span></p>
-<p class="p1"><span class="s1">      if (!storedUrl) {</span></p>
-<p class="p1"><span class="s1">        document.getElementById('setupGate').classList.remove('hidden');</span></p>
-<p class="p1"><span class="s1">        document.getElementById('dashboardCore').classList.add('hidden');</span></p>
-<p class="p1"><span class="s1">      } else {</span></p>
-<p class="p1"><span class="s1">        document.getElementById('setupGate').classList.add('hidden');</span></p>
-<p class="p1"><span class="s1">        document.getElementById('dashboardCore').classList.remove('hidden');</span></p>
-<p class="p1"><span class="s1">        fetchPayloadFromSource(storedUrl);</span></p>
-<p class="p1"><span class="s1">      }</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function saveConfig() {</span></p>
-<p class="p1"><span class="s1">      const inputUrl = document.getElementById('apiUrlInput').value.trim();</span></p>
-<p class="p1"><span class="s1">      if (inputUrl.includes('<a href="http://script.google.com/"><span class="s4">script.google.com</span></a>')) {</span></p>
-<p class="p1"><span class="s1">        localStorage.setItem('ibi_dashboard_api_url', inputUrl);</span></p>
-<p class="p1"><span class="s1">        initializeDashboardLifecycle();</span></p>
-<p class="p1"><span class="s1">      } else {</span></p>
-<p class="p1"><span class="s1">        alert('Invalid link. Please supply a valid Google Apps Script Web App Deployment URL.');</span></p>
-<p class="p1"><span class="s1">      }</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function clearConfig() {</span></p>
-<p class="p1"><span class="s1">      localStorage.removeItem('ibi_dashboard_api_url');</span></p>
-<p class="p1"><span class="s1">      location.reload();</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function fetchPayloadFromSource(apiUrl) {</span></p>
-<p class="p1"><span class="s1">      // Append streaming parameter payload descriptor to hook the script endpoint gateway</span></p>
-<p class="p1"><span class="s1">      fetch(`${apiUrl}?stream=live_dashboard`)</span></p>
-<p class="p1"><span class="s1">        .then(response =&gt; response.json())</span></p>
-<p class="p1"><span class="s1">        .then(data =&gt; {</span></p>
-<p class="p1"><span class="s1">          globalDataRaw = data;</span></p>
-<p class="p1"><span class="s1">          processAndRenderDashboardMatrix();</span></p>
-<p class="p1"><span class="s1">        })</span></p>
-<p class="p1"><span class="s1">        .catch(err =&gt; {</span></p>
-<p class="p1"><span class="s1">          alert("Database connection timeout or formatting error. Check deployment permissions.");</span></p>
-<p class="p1"><span class="s1">          clearConfig();</span></p>
-<p class="p1"><span class="s1">        });</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function toggleViewMode() {</span></p>
-<p class="p1"><span class="s1">      isYearToDateMode = !isYearToDateMode;</span></p>
-<p class="p1"><span class="s1">      document.getElementById('viewToggle').textContent = isYearToDateMode ? "SWITCH TO MONTHLY VIEW" : "SWITCH TO YTD VIEW";</span></p>
-<p class="p1"><span class="s1">      document.getElementById('contextBadge').textContent = isYearToDateMode ? "Active Dashboard Scope: Year-To-Date (YTD) Summary" : "Active Dashboard Scope: Current Month (MTD)";</span></p>
-<p class="p1"><span class="s1">      processAndRenderDashboardMatrix();</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function processAndRenderDashboardMatrix() {</span></p>
-<p class="p1"><span class="s1">      const today = new Date();</span></p>
-<p class="p1"><span class="s1">      const currentMonth = today.getMonth();</span></p>
-<p class="p1"><span class="s1">      const currentYear = today.getFullYear();</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      // Filter data depending on chosen scope mode</span></p>
-<p class="p1"><span class="s1">      let filteredRecords = globalDataRaw.filter(record =&gt; {</span></p>
-<p class="p1"><span class="s1">        if (!record.invoice_date) return false;</span></p>
-<p class="p1"><span class="s1">        let rDate = new Date(record.invoice_date);</span></p>
-<p class="p1"><span class="s1">        if (isNaN(rDate.getTime())) return false;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        if (isYearToDateMode) {</span></p>
-<p class="p1"><span class="s1">          return rDate.getFullYear() === currentYear; // Match current calendar year</span></p>
-<p class="p1"><span class="s1">        } else {</span></p>
-<p class="p1"><span class="s1">          return rDate.getMonth() === currentMonth &amp;&amp; rDate.getFullYear() === currentYear; // Strict active month mapping</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      // Reset KPI counters</span></p>
-<p class="p1"><span class="s1">      let total = 0, approved = 0, pending = 0, pastDue = 0;</span></p>
-<p class="p1"><span class="s1">      let locationAggregator = {};</span></p>
-<p class="p1"><span class="s1">      let categoryAggregator = {};</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      filteredRecords.forEach(rec =&gt; {</span></p>
-<p class="p1"><span class="s1">        let amt = parseFloat(rec.amount) || 0;</span></p>
-<p class="p1"><span class="s1">        total += amt;</span></p>
-<p class="p1"><span class="s1">        </span></p>
-<p class="p1"><span class="s1">        let stat = String(rec.status).trim();</span></p>
-<p class="p1"><span class="s1">        if (stat === "Approved" || stat === "Paid") approved += amt;</span></p>
-<p class="p1"><span class="s1">        if (stat.includes("Pending")) pending += amt;</span></p>
-<p class="p1"><span class="s1">        if (stat === "Past Due") pastDue += amt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        // Compile location volume arrays</span></p>
-<p class="p1"><span class="s1">        let loc = rec.location ? rec.location.trim() : "Unassigned";</span></p>
-<p class="p1"><span class="s1">        locationAggregator[loc] = (locationAggregator[loc] || 0) + amt;</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">        // Compile category volume arrays</span></p>
-<p class="p1"><span class="s1">        let cat = rec.category ? rec.category.trim() : "Unassigned";</span></p>
-<p class="p1"><span class="s1">        categoryAggregator[cat] = (categoryAggregator[cat] || 0) + amt;</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      // Update values in the UI DOM layout</span></p>
-<p class="p1"><span class="s1">      document.getElementById('kpiTotal').textContent = formatCurrency(total);</span></p>
-<p class="p1"><span class="s1">      document.getElementById('kpiApproved').textContent = formatCurrency(approved);</span></p>
-<p class="p1"><span class="s1">      document.getElementById('kpiPending').textContent = formatCurrency(pending);</span></p>
-<p class="p1"><span class="s1">      document.getElementById('kpiPastDue').textContent = formatCurrency(pastDue);</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      renderCharts(locationAggregator, categoryAggregator);</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function formatCurrency(val) {</span></p>
-<p class="p1"><span class="s1">      return '$' + val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">    function renderCharts(locationData, categoryData) {</span></p>
-<p class="p1"><span class="s1">      // Destruction markers to clean memory instances before drawing charts</span></p>
-<p class="p1"><span class="s1">      if (locationChartInstance) locationChartInstance.destroy();</span></p>
-<p class="p1"><span class="s1">      if (categoryChartInstance) categoryChartInstance.destroy();</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      Chart.defaults.color = '#94a3b8';</span></p>
-<p class="p1"><span class="s1">      Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      // Draw Location Chart (Bar Visuals)</span></p>
-<p class="p1"><span class="s1">      const locCtx = document.getElementById('locationChart').getContext('2d');</span></p>
-<p class="p1"><span class="s1">      locationChartInstance = new Chart(locCtx, {</span></p>
-<p class="p1"><span class="s1">        type: 'bar',</span></p>
-<p class="p1"><span class="s1">        data: {</span></p>
-<p class="p1"><span class="s1">          labels: Object.keys(locationData),</span></p>
-<p class="p1"><span class="s1">          datasets: [{</span></p>
-<p class="p1"><span class="s1">            label: 'Total Expenses',</span></p>
-<p class="p1"><span class="s1">            data: Object.values(locationData),</span></p>
-<p class="p1"><span class="s1">            backgroundColor: '#3b82f6',</span></p>
-<p class="p1"><span class="s1">            borderRadius: 6,</span></p>
-<p class="p1"><span class="s1">            borderSkipped: false</span></p>
-<p class="p1"><span class="s1">          }]</span></p>
-<p class="p1"><span class="s1">        },</span></p>
-<p class="p1"><span class="s1">        options: {</span></p>
-<p class="p1"><span class="s1">          responsive: true,</span></p>
-<p class="p1"><span class="s1">          maintainAspectRatio: false,</span></p>
-<p class="p1"><span class="s1">          plugins: { legend: { display: false } },</span></p>
-<p class="p1"><span class="s1">          scales: {</span></p>
-<p class="p1"><span class="s1">            x: { grid: { display: false } },</span></p>
-<p class="p1"><span class="s1">            y: { grid: { color: '#334155' } }</span></p>
-<p class="p1"><span class="s1">          }</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p3"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1">      // Draw Category Chart (Doughnut/Pie Slices Matrix)</span></p>
-<p class="p1"><span class="s1">      const catCtx = document.getElementById('categoryChart').getContext('2d');</span></p>
-<p class="p1"><span class="s1">      categoryChartInstance = new Chart(catCtx, {</span></p>
-<p class="p1"><span class="s1">        type: 'doughnut',</span></p>
-<p class="p1"><span class="s1">        data: {</span></p>
-<p class="p1"><span class="s1">          labels: Object.keys(categoryData),</span></p>
-<p class="p1"><span class="s1">          datasets: [{</span></p>
-<p class="p1"><span class="s1">            data: Object.values(categoryData),</span></p>
-<p class="p1"><span class="s1">            backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#3b82f6', '#64748b'],</span></p>
-<p class="p1"><span class="s1">            borderWidth: 0</span></p>
-<p class="p1"><span class="s1">          }]</span></p>
-<p class="p1"><span class="s1">        },</span></p>
-<p class="p1"><span class="s1">        options: {</span></p>
-<p class="p1"><span class="s1">          responsive: true,</span></p>
-<p class="p1"><span class="s1">          maintainAspectRatio: false,</span></p>
-<p class="p1"><span class="s1">          plugins: {</span></p>
-<p class="p1"><span class="s1">            legend: { position: 'bottom', labels: { boxWidth: 12, padding: 15 } }</span></p>
-<p class="p1"><span class="s1">          }</span></p>
-<p class="p1"><span class="s1">        }</span></p>
-<p class="p1"><span class="s1">      });</span></p>
-<p class="p1"><span class="s1">    }</span></p>
-<p class="p1"><span class="s1">  &lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<body class="text-slate-200 min-h-screen p-6">
+
+  <header class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-800 pb-4 mb-6 gap-4">
+    <div>
+      <h1 class="text-2xl font-bold tracking-tight flex items-center gap-2 text-white">
+        <span class="bg-blue-600 p-1.5 rounded-lg text-sm font-black">IBI</span> CLINIC INTELLIGENCE
+      </h1>
+      <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">Accounts Payable Operations Hub</p>
+    </div>
+    
+    <div class="flex flex-wrap items-center gap-3">
+      <button id="viewToggle" onclick="toggleViewMode()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2.5 rounded-lg shadow transition cursor-pointer">
+        SWITCH TO YTD VIEW
+      </button>
+      <button onclick="clearConfig()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs px-3 py-2.5 rounded-lg border border-slate-700 transition cursor-pointer">
+        Disconnect Sheet
+      </button>
+    </div>
+  </header>
+
+  <div id="setupGate" class="hidden bg-slate-900 border border-slate-800 rounded-xl p-6 max-w-xl mx-auto my-12 text-center shadow-2xl">
+    <div class="text-3xl mb-3">🔒</div>
+    <h3 class="text-lg font-bold text-white mb-2">Connect Your Secure Data Stream</h3>
+    <p class="text-slate-400 text-sm mb-4">Paste your Google Apps Script Web App URL below to safely link your interactive frontend dashboard to your live spreadsheet logs.</p>
+    <input type="text" id="apiUrlInput" placeholder="https://script.google.com/a/macros/ibihealthcare.com/s/.../exec" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-sm text-slate-200 focus:outline-none focus:border-blue-500 mb-4">
+    <button onclick="saveConfig()" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-6 py-2 rounded-lg cursor-pointer transition">Connect Live Database</button>
+  </div>
+
+  <main id="dashboardCore" class="hidden">
+    
+    <div class="mb-4">
+      <span id="contextBadge" class="bg-blue-950 text-blue-400 font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full border border-blue-900">
+        Active Dashboard Scope: Current Month (MTD)
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm">
+        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Evaluated Cash</p>
+        <p id="kpiTotal" class="text-3xl font-bold text-white mt-1">$0.00</p>
+        <span class="inline-block text-[11px] font-medium bg-slate-800 text-slate-300 px-2 py-0.5 rounded mt-2 border border-slate-700">Gross Portfolio Sum</span>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm">
+        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Approved for Release</p>
+        <p id="kpiApproved" class="text-3xl font-bold text-emerald-400 mt-1">$0.00</p>
+        <span class="inline-block text-[11px] font-medium bg-emerald-950 text-emerald-400 px-2 py-0.5 rounded mt-2 border border-emerald-900">Cleared for Clearing</span>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm">
+        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Pending Human Review</p>
+        <p id="kpiPending" class="text-3xl font-bold text-amber-400 mt-1">$0.00</p>
+        <span class="inline-block text-[11px] font-medium bg-amber-950 text-amber-400 px-2 py-0.5 rounded mt-2 border border-amber-900">Awaiting Response Click</span>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 shadow-sm">
+        <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Past Due Delinquency</p>
+        <p id="kpiPastDue" class="text-3xl font-bold text-rose-500 mt-1">$0.00</p>
+        <span class="inline-block text-[11px] font-medium bg-rose-950 text-rose-400 px-2 py-0.5 rounded mt-2 border border-rose-900">Aging Out Limits</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-5 min-h-[380px] flex flex-col justify-between">
+        <div>
+          <h2 class="text-md font-bold text-white uppercase tracking-wide">Regional Footprint Distribution</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Expenditures mapped explicitly across regional healthcare offices</p>
+        </div>
+        <div class="h-64 mt-4 relative">
+          <canvas id="locationChart"></canvas>
+        </div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 min-h-[380px] flex flex-col justify-between">
+        <div>
+          <h2 class="text-md font-bold text-white uppercase tracking-wide">Expenditure Sourcing Mix</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Portfolio split across specialized operating cost codes</p>
+        </div>
+        <div class="h-64 mt-4 relative flex justify-center items-center">
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    let globalDataRaw = [];
+    let isYearToDateMode = false;
+    let locationChartInstance = null;
+    let categoryChartInstance = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initializeDashboardLifecycle();
+    });
+
+    function initializeDashboardLifecycle() {
+      const storedUrl = localStorage.getItem('ibi_dashboard_api_url');
+      if (!storedUrl) {
+        document.getElementById('setupGate').classList.remove('hidden');
+        document.getElementById('dashboardCore').classList.add('hidden');
+      } else {
+        document.getElementById('setupGate').classList.add('hidden');
+        document.getElementById('dashboardCore').classList.remove('hidden');
+        fetchPayloadFromSource(storedUrl);
+      }
+    }
+
+    function saveConfig() {
+      const inputUrl = document.getElementById('apiUrlInput').value.trim();
+      if (inputUrl.includes('script.google.com')) {
+        localStorage.setItem('ibi_dashboard_api_url', inputUrl);
+        initializeDashboardLifecycle();
+      } else {
+        alert('Invalid link. Please supply a valid Google Apps Script Web App Deployment URL.');
+      }
+    }
+
+    function clearConfig() {
+      localStorage.removeItem('ibi_dashboard_api_url');
+      location.reload();
+    }
+
+    function fetchPayloadFromSource(apiUrl) {
+      // Append streaming parameter payload descriptor to hook the script endpoint gateway
+      fetch(`${apiUrl}?stream=live_dashboard`)
+        .then(response => response.json())
+        .then(data => {
+          globalDataRaw = data;
+          processAndRenderDashboardMatrix();
+        })
+        .catch(err => {
+          alert("Database connection timeout or formatting error. Check deployment permissions.");
+          clearConfig();
+        });
+    }
+
+    function toggleViewMode() {
+      isYearToDateMode = !isYearToDateMode;
+      document.getElementById('viewToggle').textContent = isYearToDateMode ? "SWITCH TO MONTHLY VIEW" : "SWITCH TO YTD VIEW";
+      document.getElementById('contextBadge').textContent = isYearToDateMode ? "Active Dashboard Scope: Year-To-Date (YTD) Summary" : "Active Dashboard Scope: Current Month (MTD)";
+      processAndRenderDashboardMatrix();
+    }
+
+    function processAndRenderDashboardMatrix() {
+      const today = new Date();
+      const currentMonth = today.getMonth();
+      const currentYear = today.getFullYear();
+
+      // Filter data depending on chosen scope mode
+      let filteredRecords = globalDataRaw.filter(record => {
+        if (!record.invoice_date) return false;
+        let rDate = new Date(record.invoice_date);
+        if (isNaN(rDate.getTime())) return false;
+
+        if (isYearToDateMode) {
+          return rDate.getFullYear() === currentYear; // Match current calendar year
+        } else {
+          return rDate.getMonth() === currentMonth && rDate.getFullYear() === currentYear; // Strict active month mapping
+        }
+      });
+
+      // Reset KPI counters
+      let total = 0, approved = 0, pending = 0, pastDue = 0;
+      let locationAggregator = {};
+      let categoryAggregator = {};
+
+      filteredRecords.forEach(rec => {
+        let amt = parseFloat(rec.amount) || 0;
+        total += amt;
+        
+        let stat = String(rec.status).trim();
+        if (stat === "Approved" || stat === "Paid") approved += amt;
+        if (stat.includes("Pending")) pending += amt;
+        if (stat === "Past Due") pastDue += amt;
+
+        // Compile location volume arrays
+        let loc = rec.location ? rec.location.trim() : "Unassigned";
+        locationAggregator[loc] = (locationAggregator[loc] || 0) + amt;
+
+        // Compile category volume arrays
+        let cat = rec.category ? rec.category.trim() : "Unassigned";
+        categoryAggregator[cat] = (categoryAggregator[cat] || 0) + amt;
+      });
+
+      // Update values in the UI DOM layout
+      document.getElementById('kpiTotal').textContent = formatCurrency(total);
+      document.getElementById('kpiApproved').textContent = formatCurrency(approved);
+      document.getElementById('kpiPending').textContent = formatCurrency(pending);
+      document.getElementById('kpiPastDue').textContent = formatCurrency(pastDue);
+
+      renderCharts(locationAggregator, categoryAggregator);
+    }
+
+    function formatCurrency(val) {
+      return '$' + val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function renderCharts(locationData, categoryData) {
+      // Destruction markers to clean memory instances before drawing charts
+      if (locationChartInstance) locationChartInstance.destroy();
+      if (categoryChartInstance) categoryChartInstance.destroy();
+
+      Chart.defaults.color = '#94a3b8';
+      Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+
+      // Draw Location Chart (Bar Visuals)
+      const locCtx = document.getElementById('locationChart').getContext('2d');
+      locationChartInstance = new Chart(locCtx, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(locationData),
+          datasets: [{
+            label: 'Total Expenses',
+            data: Object.values(locationData),
+            backgroundColor: '#3b82f6',
+            borderRadius: 6,
+            borderSkipped: false
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { grid: { display: false } },
+            y: { grid: { color: '#334155' } }
+          }
+        }
+      });
+
+      // Draw Category Chart (Doughnut/Pie Slices Matrix)
+      const catCtx = document.getElementById('categoryChart').getContext('2d');
+      categoryChartInstance = new Chart(catCtx, {
+        type: 'doughnut',
+        data: {
+          labels: Object.keys(categoryData),
+          datasets: [{
+            data: Object.values(categoryData),
+            backgroundColor: ['#6366f1', '#10b981', '#f59e0b', '#ec4899', '#8b5cf6', '#3b82f6', '#64748b'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 12, padding: 15 } }
+          }
+        }
+      });
+    }
+  </script>
 </body>
 </html>
